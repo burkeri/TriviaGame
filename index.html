@@ -17,10 +17,12 @@
     <!-- CSS -->
         <!-- Reset -->
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-        <!-- Stylesheet -->
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css"/>
         <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <!-- Stylesheet -->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css"/>
+        <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:700|Roboto+Mono:700" rel="stylesheet">
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -31,9 +33,43 @@
 
 <body>
 
+    <!-- Game Container -->
+    <div class="container-fluid">
 
+        <!-- Full Page -->
+        <div class="row" id="full-pg-row">
 
+            <!-- Audio -->
+            <audio><source type="audio/mpeg"></audio>
 
+            <!-- Image -->
+            <div class="col-sm-6" id="image"></div>
+
+            <!-- Interface -->
+            <div class="col-sm-6" id="interface">
+
+                <!-- Timer -->
+                <div class="row" id="timer-row">
+                    <div class="col-lg-12 text-center" id="timer">
+                        <span id="timer-numbers">30</span>
+                    </div>
+                </div>
+
+                <!-- Answer Buttons -->
+                <div class="row" id="ans-btns-row">
+                    <div class="col-lg-12" id="ans-btns">
+                        <button type="button" class="btn btn-primary btn-lg btn-block" id="ans1"></button>
+                        <button type="button" class="btn btn-primary btn-lg btn-block" id="ans2"></button>
+                        <button type="button" class="btn btn-primary btn-lg btn-block" id="ans3"></button>
+                        <button type="button" class="btn btn-primary btn-lg btn-block" id="ans4"></button>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+
+    </div>
 
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 

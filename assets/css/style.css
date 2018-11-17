@@ -1,0 +1,33 @@
+
+.btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+    border-radius: 100px;
+}
+
+#ans-btns {
+    /* padding-top: 5%; */
+}
+
+#ans1, #ans2, #ans3, #ans4 {
+    font-family: 'Nunito';
+    font-size: 30px;
+    margin: 20px 0 20px 0;
+}
+
+#timer-numbers {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 2000%;;
+    line-height: 300px;
+}
+
+/* Media Query */
+
+@media screen and (max-width: 575px) {
+
+    #image {
+        display: none;
+    }
+
+}
