@@ -1,9 +1,24 @@
+/* Start Menu */
+
+#game-title {
+    font-family: 'Nunito';
+    font-size: 500%;
+    width: 90%;
+    margin-top: 10%;
+}
+
+#instructions {
+    font-family: 'Nunito';
+    font-size: 200%;
+    margin-top: 10%;
+}
 
 /* Interface */
 
-/* #interface {
+#interface {
     display: none;
-} */
+}
+
 .btn-block {
     display: block;
     width: 100%;
