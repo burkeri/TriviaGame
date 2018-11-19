@@ -1,4 +1,6 @@
-// Musical List
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// MUSICAL LIST
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // 1) Hairspay
 // 2) The Fantasticks
@@ -11,7 +13,9 @@
 // 9) A Chorus Line
 // 10) Dear Evan Hansen 
 
-// Musical Object
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// MUSICALS OBJECT
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 var trivia = [
     {
@@ -116,13 +120,15 @@ var trivia = [
     }
 ]
 
-// Global Variables
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// GLOBAL VARIABLES
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 var score = 0;
 var i = 0;
 var timer = 30;
 var song = new Audio(trivia[i].opSong);
-$("#start").val("start");
+// $("#start").val("start");
 
 function countdown () {
     if (timer > 0) {
@@ -138,18 +144,17 @@ function countdown () {
         $("#reveal").fadeIn();
         $("#reveal-text").text("Out of Time!");
         $("#reveal-musical-image").attr("src", trivia[i].image);
-
-        // ========== NOT WORKING ===========
-        // when correct answer is shown, musical name will not change
-        $("#reveal-musical").text("TEST");
-        // ==================================
-
+        $("#reveal-musical").text(trivia[i].name);
         // iterate i
         i++;
         // wait 4 seconds and reset the game
         setTimeout(replaceQuizValues, 4000);
     }
 }
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// FUNCTIONS
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 function replaceQuizValues () {
     // show the game's main inter face
@@ -201,18 +206,14 @@ function checkAnswer () {
             $("#reveal").fadeIn();
             $("#reveal-text").text("Correct!");
             $("#reveal-musical-image").attr("src", trivia[i].image);
-
-            // ========== NOT WORKING ===========
-            // when correct answer is shown, musical name will not change
-            $("#reveal-musical").text("TEST");
-            // ==================================
-  
+            $("#reveal-musical").text(trivia[i].name);
             // iterate i
             i++;
             // wait 4 seconds and reset the game
             setTimeout(replaceQuizValues, 4000);
         } 
         else if (this.value === "start") {
+            // runs nothing
             // gets rid of start button glitch
         }
         else {
@@ -224,12 +225,7 @@ function checkAnswer () {
             $("#reveal").fadeIn();
             $("#reveal-text").text("Wrong!");
             $("#reveal-musical-image").attr("src", trivia[i].image);
-
-            // ========== NOT WORKING ===========
-            // when correct answer is shown, musical name will not change
-            $("#reveal-musical").text("TEST");
-            // ==================================
-  
+            $("#reveal-musical").text(trivia[i].name);
             // iterate i
             i++;
             // wait 4 seconds and reset the game
@@ -238,7 +234,15 @@ function checkAnswer () {
     });
 }
 
+// function endGame () {
+//     if ( i === 11) {
 
+//     }
+// }
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// GAME
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // Game Start
 $("#start").click( function () {

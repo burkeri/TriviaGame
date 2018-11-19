@@ -1,5 +1,9 @@
 /* Start Menu */
 
+/* #start-menu {
+    display: none;
+} */
+
 #game-title {
     font-family: 'Nunito';
     font-size: 500%;
@@ -11,6 +15,10 @@
     font-family: 'Nunito';
     font-size: 200%;
     margin-top: 10%;
+}
+
+#start {
+    font-display: 'Nunito';
 }
 
 /* Interface */
@@ -54,9 +62,24 @@
     padding: 5% 0 10% 0;
 }
 
-#reveal-muscial-answer, #reveal-muscial {
+#reveal-muscial-answer, #reveal-musical {
     font-family: 'Nunito';
     font-size: 200%;
+}
+
+/* End Game */
+
+#end-game {
+    display: none;
+}
+
+#score-text, #score-display {
+    font-family: 'Nunito';
+    font-size: 800%;
+}
+
+#play-again {
+    font-family: 'Nunito';
 }
 
 /* Media Query */

@@ -60,7 +60,8 @@
                     <div class="row">
                         <div class="col-lg-12 text-center" id="instructions">
                             <p>Can you match the opening number to the musical in only 30 seconds?</p>
-                            <button type="button" class="btn btn-primary btn-lg" id="start">Start</button>
+                            <p>(Turn sound on!)</p>
+                            <button type="button" class="btn btn-primary btn-lg" id="start" value="start">Start</button>
                         </div>
                     </div>
                 </div>
@@ -103,7 +104,19 @@
                     <div class="row">
                         <div class="col-lg-12 text-center">
                             <span id="reveal-muscial-answer">Answer: </span>
-                            <p id="reveal-muscial">Hairspray</p>
+                            <p id="reveal-musical">Hairspray</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End Game -->
+                <div id="end-game">
+                    <div class="row">
+                        <!-- Score Display and Play Again-->
+                        <div class="col-lg-12 text-center">
+                            <p id="score-text">Score:</p>
+                            <p id="score-display"></p>
+                            <button type="button" class="btn btn-primary btn-lg" id="play-again" value="play-again">Play Again?</button>
                         </div>
                     </div>
                 </div>
