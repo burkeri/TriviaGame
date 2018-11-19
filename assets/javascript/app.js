@@ -135,7 +135,8 @@ var stopwatch = setInterval(countdown, 1000);
 // FUNCTIONS
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// Game Start
+// Initialise Game
+
 function replaceQuizValues () {
     // hide the reveal screen
     $("#reveal").css("display", "none");
@@ -160,16 +161,14 @@ function replaceQuizValues () {
 // Game Over
 
 function endGame () {
-
     if (i === 10){
-    // clear the timeout and the interval
-    clearTimeout(replace);
     // clear the interval
     clearInterval(stopwatch);
+    // clear the timeout and the interval
+    clearTimeout(replace);
     // call function after 4 seconds
     setTimeout(initialiseGameOver, 4000);
     }
-
 }
 
 function initialiseGameOver () {
@@ -180,6 +179,18 @@ function initialiseGameOver () {
     $("#end-game").fadeIn();
     // show the score
     $("#score-display").text(score + "/10");
+}
+
+function playAgain () {
+        console.log("PLAY AGAIN");
+        // // reset global variables
+        // score = 0;
+        // i = 0;
+        // timer = 30;
+        // // hide the end game screen
+        // $("#end-game").css("display", "none");
+        // // show the start menu
+        // $("#start-menu").fadeIn();
 }
 
 // Game Mechanics
@@ -202,55 +213,62 @@ function countdown () {
         // iterate i
         i++;
         // show next question or end the game
-        replace = setTimeout(replaceQuizValues, 2000);
+        replace = setTimeout(replaceQuizValues, 1000);
         endGame();   
     }
 }
 
 function checkAnswer () {
 
-    // when a button is clicked
-    $("button").click(function () {
-        // if the value of the button is equal to the answer
-        if (this.value == trivia[i].answer) {
-            // increase the score
-            score++;
-            //stop the song
-            song.pause();
-            // hide the game interface
-            $("#interface").css("display", "none");
-            // show the correct answer screen
-            $("#reveal").fadeIn();
-            $("#reveal-text").text("Correct!");
-            $("#reveal-musical-image").attr("src", trivia[i].image);
-            $("#reveal-musical").text(trivia[i].name);
-            // iterate i
-            i++;
-            // show next question or end the game
-            replace = setTimeout(replaceQuizValues, 2000);
-            endGame(); 
-        } 
-        else if (this.value === "start") {
-            // runs nothing
-            // gets rid of start button glitch
-        }
-        else {
-            //stop the song
-            song.pause();
-            // hide the game interface
-            $("#interface").css("display", "none");
-            // show the correct answer screen
-            $("#reveal").fadeIn();
-            $("#reveal-text").text("Wrong!");
-            $("#reveal-musical-image").attr("src", trivia[i].image);
-            $("#reveal-musical").text(trivia[i].name);
-            // iterate i
-            i++;
-            // show next question or end the game
-            replace = setTimeout(replaceQuizValues, 2000);
-            endGame(); 
-        }
-    });
+    if (i < 10){
+
+        // when a button is clicked
+        $("button").click(function () {
+            // if the chosen answer is correct...
+            if (this.value == trivia[i].answer) {
+                // increase the score
+                score++;
+                //stop the song
+                song.pause();
+                // hide the game interface
+                $("#interface").css("display", "none");
+                // show the correct answer screen
+                $("#reveal").fadeIn();
+                $("#reveal-text").text("Correct!");
+                $("#reveal-musical-image").attr("src", trivia[i].image);
+                $("#reveal-musical").text(trivia[i].name);
+                // iterate i
+                i++;
+                // show next question or end the game
+                replace = setTimeout(replaceQuizValues, 1000);
+                endGame(); 
+            } 
+            else if (this.value === "start") {
+                // runs nothing
+                // gets rid of start button glitch
+            }
+            // if the chosen answer is incorrect...
+            else {
+                //stop the song
+                song.pause();
+                // hide the game interface
+                $("#interface").css("display", "none");
+                // show the correct answer screen
+                $("#reveal").fadeIn();
+                $("#reveal-text").text("Wrong!");
+                $("#reveal-musical-image").attr("src", trivia[i].image);
+                $("#reveal-musical").text(trivia[i].name);
+                // iterate i
+                i++;
+                // show next question or end the game
+                replace = setTimeout(replaceQuizValues, 1000);
+                endGame(); 
+            }
+        });
+
+    }
+
+
 }
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -273,11 +291,16 @@ $("#start").click( function () {
     song = new Audio(trivia[0].opSong);
     song.play();
     // start the countdown
-    setInterval(countdown, 1000);  
+    stopwatch = setInterval(countdown, 1000);  
 })
 
 // Answer Checker
 checkAnswer();
+
+
+$("#play-again").click( function (){
+    playAgain();
+})
 
 
 
@@ -286,3 +309,5 @@ checkAnswer();
 // add endgame function on play again (clear interval)
 // clear timeout for endgame
 // wrap it in document.ready
+
+// restart button: call, set initerval
