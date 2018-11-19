@@ -26,10 +26,6 @@
     border-radius: 100px;
 }
 
-#ans-btns {
-    /* padding-top: 5%; */
-}
-
 #ans1, #ans2, #ans3, #ans4 {
     font-family: 'Nunito';
     font-size: 30px;

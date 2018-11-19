@@ -122,11 +122,32 @@ var score = 0;
 var i = 0;
 var timer = 30;
 var song = new Audio(trivia[i].opSong);
+$("#start").val("start");
 
 function countdown () {
     if (timer > 0) {
         timer--;
         $("#timer-numbers").text(timer);
+    } 
+    else if (timer === 0) {
+        //stop the timer
+        timer = null;
+        // hide the game interface
+        $("#interface").css("display", "none");
+        // show the correct answer screen
+        $("#reveal").fadeIn();
+        $("#reveal-text").text("Out of Time!");
+        $("#reveal-musical-image").attr("src", trivia[i].image);
+
+        // ========== NOT WORKING ===========
+        // when correct answer is shown, musical name will not change
+        $("#reveal-musical").text("TEST");
+        // ==================================
+
+        // iterate i
+        i++;
+        // wait 4 seconds and reset the game
+        setTimeout(replaceQuizValues, 4000);
     }
 }
 
@@ -157,17 +178,21 @@ function showInterface () {
 }
 
 function checkAnswer () {
+
     // when a button is clicked
     $("button").click(function () {
         // if the value of the button is equal to the answer
         if (this.value == trivia[i].answer) {
-            console.log("That's correct!");
+            // console.log("That's correct!");
             // turn off the timer
-            var stopwatch = setInterval(countdown, 1000);
-            clearInterval(stopwatch);
+            // var stopwatch = setInterval(countdown, 1000);
+            // clearInterval(stopwatch);
+
             // increase the score
             score++;
-            console.log("score: " + score);
+
+            // console.log("score: " + score);
+
             //stop the song
             song.pause();
             // hide the game interface
@@ -184,8 +209,31 @@ function checkAnswer () {
   
             // iterate i
             i++;
-            // wait five seconds and reset the game
-            setTimeout(replaceQuizValues, 5000);
+            // wait 4 seconds and reset the game
+            setTimeout(replaceQuizValues, 4000);
+        } 
+        else if (this.value === "start") {
+            // gets rid of start button glitch
+        }
+        else {
+            //stop the song
+            song.pause();
+            // hide the game interface
+            $("#interface").css("display", "none");
+            // show the correct answer screen
+            $("#reveal").fadeIn();
+            $("#reveal-text").text("Wrong!");
+            $("#reveal-musical-image").attr("src", trivia[i].image);
+
+            // ========== NOT WORKING ===========
+            // when correct answer is shown, musical name will not change
+            $("#reveal-musical").text("TEST");
+            // ==================================
+  
+            // iterate i
+            i++;
+            // wait 4 seconds and reset the game
+            setTimeout(replaceQuizValues, 4000);
         }
     });
 }
@@ -193,22 +241,24 @@ function checkAnswer () {
 
 
 // Game Start
-
 $("#start").click( function () {
     // hide the start menu
     $("#start-menu").css("display", "none");
     $("#interface").fadeIn();
-    // assigns first correct answer marker
+    // assign first correct answer marker
     var answerBtn = "#ans" + trivia[0].answer;
     $(answerBtn).val(trivia[0].answer);
-    // plays first song
+    // play first song
     song = new Audio(trivia[0].opSong);
     song.play();
     // start the countdown
-    setInterval(countdown, 1000);
+    setInterval(countdown, 1000);   
 })
 
+// Answer Checker
 checkAnswer();
 
+
 // To Do:
-// when start is clicked
+// build endgame css and html
+// add endgame function on play again (clear interval)
