@@ -124,21 +124,18 @@ var timer = 30;
 var song = new Audio(trivia[i].opSong);
 
 function countdown () {
-    $("#timer-numbers").text(timer);
     if (timer > 0) {
         timer--;
+        $("#timer-numbers").text(timer);
     }
 }
 
-// start the countdown
-var stopwatch = setInterval(countdown, 1000);
-
 function replaceQuizValues () {
-    // reset the timer
+    // show the game's main inter face
+    showInterface();
+    // reset the timer and display
     timer = 30;
     $("#timer-numbers").text(timer);
-    // start the countdown
-    setInterval(countdown, 1000);
     // change the text in the button to corresponding choices
     $("#ans1").text(trivia[i].choice1);
     $("#ans2").text(trivia[i].choice2);
@@ -147,9 +144,16 @@ function replaceQuizValues () {
     // assign the answer button a value of "answer"
     var answerBtn = "#ans" + trivia[i].answer;
     $(answerBtn).val(trivia[i].answer);
-    // play the song question
+    // play the song/question
     song = new Audio(trivia[i].opSong);
     song.play();
+}
+
+function showInterface () {
+    // hide the reveal screen
+    $("#reveal").css("display", "none");
+    // show game interface
+    $("#interface").css("display", "block");
 }
 
 function checkAnswer () {
@@ -159,21 +163,29 @@ function checkAnswer () {
         if (this.value == trivia[i].answer) {
             console.log("That's correct!");
             // turn off the timer
+            var stopwatch = setInterval(countdown, 1000);
             clearInterval(stopwatch);
             // increase the score
             score++;
+            console.log("score: " + score);
             //stop the song
             song.pause();
+            // hide the game interface
+            $("#interface").css("display", "none");
             // show the correct answer screen
             $("#reveal").fadeIn();
             $("#reveal-text").text("Correct!");
             $("#reveal-musical-image").attr("src", trivia[i].image);
-            $("reveal-musical").text(trivia[i].name);
+
+            // ========== NOT WORKING ===========
+            // when correct answer is shown, musical name will not change
+            $("#reveal-musical").text("TEST");
+            // ==================================
+  
             // iterate i
             i++;
             // wait five seconds and reset the game
             setTimeout(replaceQuizValues, 5000);
-            setTimeout(stopwatch, 5000);
         }
     });
 }
@@ -192,6 +204,8 @@ $("#start").click( function () {
     // plays first song
     song = new Audio(trivia[0].opSong);
     song.play();
+    // start the countdown
+    setInterval(countdown, 1000);
 })
 
 checkAnswer();
