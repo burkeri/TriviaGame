@@ -375,12 +375,3 @@ $("#play-again").click( function (){
     resetAesthetic();
     playAgain();
 })
-
-
-// To Do:
-// build endgame css and html
-// add endgame function on play again (clear interval)
-// clear timeout for endgame
-// wrap it in document.ready
-
-// restart button: call, set initerval
