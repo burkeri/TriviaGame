@@ -183,14 +183,14 @@ function initialiseGameOver () {
 
 function playAgain () {
         console.log("PLAY AGAIN");
-        // // reset global variables
-        // score = 0;
-        // i = 0;
-        // timer = 30;
-        // // hide the end game screen
-        // $("#end-game").css("display", "none");
-        // // show the start menu
-        // $("#start-menu").fadeIn();
+        // hide the end game screen
+        $("#end-game").css("display", "none");     
+        // reset global variables
+        score = 0;
+        i = 0;
+        timer = 30;
+        // show the start menu
+        $("#start-menu").fadeIn();
 }
 
 // Game Mechanics
@@ -220,55 +220,49 @@ function countdown () {
 
 function checkAnswer () {
 
-    if (i < 10){
-
         // when a button is clicked
-        $("button").click(function () {
-            // if the chosen answer is correct...
-            if (this.value == trivia[i].answer) {
-                // increase the score
-                score++;
-                //stop the song
-                song.pause();
-                // hide the game interface
-                $("#interface").css("display", "none");
-                // show the correct answer screen
-                $("#reveal").fadeIn();
-                $("#reveal-text").text("Correct!");
-                $("#reveal-musical-image").attr("src", trivia[i].image);
-                $("#reveal-musical").text(trivia[i].name);
-                // iterate i
-                i++;
-                // show next question or end the game
-                replace = setTimeout(replaceQuizValues, 1000);
-                endGame(); 
-            } 
-            else if (this.value === "start") {
-                // runs nothing
-                // gets rid of start button glitch
-            }
-            // if the chosen answer is incorrect...
-            else {
-                //stop the song
-                song.pause();
-                // hide the game interface
-                $("#interface").css("display", "none");
-                // show the correct answer screen
-                $("#reveal").fadeIn();
-                $("#reveal-text").text("Wrong!");
-                $("#reveal-musical-image").attr("src", trivia[i].image);
-                $("#reveal-musical").text(trivia[i].name);
-                // iterate i
-                i++;
-                // show next question or end the game
-                replace = setTimeout(replaceQuizValues, 1000);
-                endGame(); 
-            }
-        });
-
-    }
-
-
+        $(".btn-block").click(function () {            
+        // if the chosen answer is correct...
+        if (this.value == trivia[i].answer) {
+            // increase the score
+            score++;
+            //stop the song
+            song.pause();
+            // hide the game interface
+            $("#interface").css("display", "none");
+            // show the correct answer screen
+            $("#reveal").fadeIn();
+            $("#reveal-text").text("Correct!");
+            $("#reveal-musical-image").attr("src", trivia[i].image);
+            $("#reveal-musical").text(trivia[i].name);
+            // iterate i
+            i++;
+            // show next question or end the game
+            replace = setTimeout(replaceQuizValues, 1000);
+            endGame(); 
+        } 
+        else if (this.value === "start") {
+            // runs nothing
+            // gets rid of start button glitch
+        }
+        // if the chosen answer is incorrect...
+        else {
+            //stop the song
+            song.pause();
+            // hide the game interface
+            $("#interface").css("display", "none");
+            // show the correct answer screen
+            $("#reveal").fadeIn();
+            $("#reveal-text").text("Wrong!");
+            $("#reveal-musical-image").attr("src", trivia[i].image);
+            $("#reveal-musical").text(trivia[i].name);
+            // iterate i
+            i++;
+            // show next question or end the game
+            replace = setTimeout(replaceQuizValues, 1000);
+            endGame(); 
+        }
+    });
 }
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -284,6 +278,11 @@ $("#start").click( function () {
     // hide the start menu
     $("#start-menu").css("display", "none");
     $("#interface").fadeIn();
+    // change the text in the button to corresponding choices
+    $("#ans1").text(trivia[0].choice1);
+    $("#ans2").text(trivia[0].choice2);
+    $("#ans3").text(trivia[0].choice3);
+    $("#ans4").text(trivia[0].choice4);
     // assign first correct answer marker
     var answerBtn = "#ans" + trivia[0].answer;
     $(answerBtn).val(trivia[0].answer);
@@ -297,11 +296,10 @@ $("#start").click( function () {
 // Answer Checker
 checkAnswer();
 
-
+// Restart Game
 $("#play-again").click( function (){
     playAgain();
 })
-
 
 
 // To Do:
