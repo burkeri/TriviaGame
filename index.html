@@ -42,7 +42,11 @@
         <div class="row" id="full-pg-row">
 
             <!-- Left Side -->
-            <div class="col-sm-6" id="image"></div>
+            <div class="col-sm-6">
+                <div id="image-container">
+                    <img id="image">
+                </div>
+            </div>
 
             <!-- Right Side-->
             <div class="col-sm-6">
@@ -61,7 +65,7 @@
                         <div class="col-lg-12 text-center" id="instructions">
                             <p>Can you match the opening number to the musical in only 30 seconds?</p>
                             <p>(Turn sound on!)</p>
-                            <button type="button" class="btn btn-primary btn-lg" id="start" value="start">Start</button>
+                            <button type="button" class="btn btn-lg" id="start" value="start">Start</button>
                         </div>
                     </div>
                 </div>
@@ -78,10 +82,10 @@
                     <!-- Answer Buttons -->
                     <div class="row" id="ans-btns-row">
                         <div class="col-lg-12" id="ans-btns">
-                            <button type="button" class="btn btn-primary btn-lg btn-block" id="ans1">Once on this Island</button>
-                            <button type="button" class="btn btn-primary btn-lg btn-block" id="ans2">Hairspray</button>
-                            <button type="button" class="btn btn-primary btn-lg btn-block" id="ans3">Dear Evan Hansen</button>
-                            <button type="button" class="btn btn-primary btn-lg btn-block" id="ans4">Aida</button>
+                            <button type="button" class="btn btn-lg btn-block" id="ans1">Once on this Island</button>
+                            <button type="button" class="btn btn-lg btn-block" id="ans2">Hairspray</button>
+                            <button type="button" class="btn btn-lg btn-block" id="ans3">Dear Evan Hansen</button>
+                            <button type="button" class="btn btn-lg btn-block" id="ans4">Aida</button>
                         </div>
                     </div>
                 </div>
@@ -116,7 +120,7 @@
                         <div class="col-lg-12 text-center">
                             <p id="score-text">Score:</p>
                             <p id="score-display"></p>
-                            <button type="button" class="btn btn-primary btn-lg" id="play-again" value="play-again">Play Again?</button>
+                            <button type="button" class="btn btn-lg" id="play-again" value="play-again">Play Again?</button>
                         </div>
                     </div>
                 </div>

@@ -26,7 +26,9 @@ var trivia = [
         choice2: "Hairspray",
         choice3: "Dear Evan Hansen",
         choice4: "Aida",
-        answer: 2
+        answer: 2,
+        color: "#e9b000",
+        background: "assets/images/aesthetics/1_wicked.png"
     },
     {
         name: "The Fantasticks",
@@ -36,7 +38,9 @@ var trivia = [
         choice2: "Come From Away",
         choice3: "Pippin",
         choice4: "Next to Normal",
-        answer: 1
+        answer: 1,
+        color: "#008f95",
+        background: "assets/images/aesthetics/2_heathers.png"
     },
     {
         name: "Aida",
@@ -46,7 +50,9 @@ var trivia = [
         choice2: "A Chorus Line",
         choice3: "Into the Woods",
         choice4: "Pippin",
-        answer: 1
+        answer: 1,
+        color: "#eb6e80",
+        background: "assets/images/aesthetics/3_singing.png"
     },
     {
         name: "Come From Away",
@@ -56,7 +62,9 @@ var trivia = [
         choice2: "Dear Evan Hansen",
         choice3: "Once on this Island",
         choice4: "Come From Away",
-        answer: 4
+        answer: 4,
+        color: "#e9b000",
+        background: "assets/images/aesthetics/4_hairspray.png"
     },
     {
         name: "Into the Woods",
@@ -66,7 +74,9 @@ var trivia = [
         choice2: "The Fantasticks",
         choice3: "Into the Woods",
         choice4: "Aida",
-        answer: 3
+        answer: 3,
+        color: "#e24e42",
+        background: "assets/images/aesthetics/5_avenueq.png"
     },
     {
         name: "Next to Normal",
@@ -76,7 +86,9 @@ var trivia = [
         choice2: "Pippin",
         choice3: "Dear Evan Hansen",
         choice4: "Hairspray",
-        answer: 1
+        answer: 1,
+        color: "#008f95",
+        background: "assets/images/aesthetics/6_cabaret.png"
     },
     {
         name: "Once on this Island",
@@ -86,7 +98,9 @@ var trivia = [
         choice2: "Next to Normal",
         choice3: "Once on this Island",
         choice4: "Into the Woods",
-        answer: 3
+        answer: 3,
+        color: "#eb6e80",
+        background: "assets/images/aesthetics/7_littleshop.png"
     },
     {
         name: "Pippin",
@@ -96,7 +110,9 @@ var trivia = [
         choice2: "A Chorus Line",
         choice3: "The Fantasticks",
         choice4: "Pippin",
-        answer: 4
+        answer: 4,
+        color: "#e9b000",
+        background: "assets/images/aesthetics/8_hamilton.png"
     },
     {
         name: "A Chorus Line",
@@ -106,7 +122,9 @@ var trivia = [
         choice2: "Hairspray",
         choice3: "A Chorus Line",
         choice4: "Dear Evan Hansen",
-        answer: 3
+        answer: 3,
+        color: "#e24e42",
+        background: "assets/images/aesthetics/9_kinkyboots.png"
     },
     {
         name: "Dear Evan Hansen",
@@ -116,7 +134,9 @@ var trivia = [
         choice2: "Come From Away",
         choice3: "Dear Evan Hansen",
         choice4: "Next to Normal",
-        answer: 3
+        answer: 3,
+        color: "#008f95",
+        background: "assets/images/aesthetics/10_phantom.png"
     }
 ]
 
@@ -128,8 +148,9 @@ var score = 0;
 var i = 0;
 var timer = 30;
 var song = new Audio(trivia[i].opSong);
-var replace = setTimeout(replaceQuizValues, 1000);
+var replace = setTimeout(replaceQuizValues, 4000);
 var stopwatch = setInterval(countdown, 1000);
+var aesthetics = setTimeout(gameAesthetics, 4000);
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // FUNCTIONS
@@ -190,7 +211,7 @@ function playAgain () {
         i = 0;
         timer = 30;
         // show the start menu
-        $("#start-menu").fadeIn();
+        $("#start-menu").fadeIn();      
 }
 
 // Game Mechanics
@@ -213,7 +234,8 @@ function countdown () {
         // iterate i
         i++;
         // show next question or end the game
-        replace = setTimeout(replaceQuizValues, 1000);
+        replace = setTimeout(replaceQuizValues, 4000);
+        setTimeout(gameAesthetics, 4000);
         endGame();   
     }
 }
@@ -238,7 +260,8 @@ function checkAnswer () {
             // iterate i
             i++;
             // show next question or end the game
-            replace = setTimeout(replaceQuizValues, 1000);
+            replace = setTimeout(replaceQuizValues, 4000);
+            setTimeout(gameAesthetics, 4000);
             endGame(); 
         } 
         else if (this.value === "start") {
@@ -259,19 +282,69 @@ function checkAnswer () {
             // iterate i
             i++;
             // show next question or end the game
-            replace = setTimeout(replaceQuizValues, 1000);
+            replace = setTimeout(replaceQuizValues, 4000);
+            setTimeout(gameAesthetics, 4000);
             endGame(); 
         }
     });
+}
+
+function gameAesthetics () {
+    console.log("called");
+    // change the body to assigned color
+    $("body").css("background-color", trivia[i].color);
+    // change the button to the assigned color
+    $("#ans1").css("background-color", trivia[i].color);
+    $("#ans2").css("background-color", trivia[i].color);
+    $("#ans3").css("background-color", trivia[i].color);
+    $("#ans4").css("background-color", trivia[i].color);
+    // change the button text to assigned color on hover
+    $("#ans1").hover( function(){
+        $(this).css("background-color", "white")
+        $(this).css("color", trivia[i].color);
+    }, function(){
+        $(this).css("background-color", trivia[i].color)
+        $(this).css("color", "white");
+    });
+    $("#ans2").hover( function(){
+        $(this).css("background-color", "white")
+        $(this).css("color", trivia[i].color);
+    }, function(){
+        $(this).css("background-color", trivia[i].color)
+        $(this).css("color", "white");
+    });
+    $("#ans3").hover( function(){
+        $(this).css("background-color", "white")
+        $(this).css("color", trivia[i].color);
+    }, function(){
+        $(this).css("background-color", trivia[i].color)
+        $(this).css("color", "white");
+    });
+    $("#ans4").hover( function(){
+        $(this).css("background-color", "white")
+        $(this).css("color", trivia[i].color);
+    }, function(){
+        $(this).css("background-color", trivia[i].color)
+        $(this).css("color", "white");
+    });
+
+    // add the corresponding image on each page
+    $("#image").attr("src", trivia[i].background);
+}
+
+function resetAesthetic () {
+    $("body").css("background-color", "#e9b000");
+    $("#image").removeAttr("src");
 }
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // GAME
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// clear interval and time out at the beginning of the game
+// clear interval and timeouts at the beginning of the game
 clearTimeout(replace);
 clearInterval(stopwatch);
+clearTimeout(aesthetics);
 
 // Game Start
 $("#start").click( function () {
@@ -290,7 +363,8 @@ $("#start").click( function () {
     song = new Audio(trivia[0].opSong);
     song.play();
     // start the countdown
-    stopwatch = setInterval(countdown, 1000);  
+    stopwatch = setInterval(countdown, 1000); 
+    gameAesthetics();
 })
 
 // Answer Checker
@@ -298,6 +372,7 @@ checkAnswer();
 
 // Restart Game
 $("#play-again").click( function (){
+    resetAesthetic();
     playAgain();
 })
 

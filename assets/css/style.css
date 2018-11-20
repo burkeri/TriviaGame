@@ -1,3 +1,30 @@
+body {
+    background-color: #e9b000;
+    color: white;
+}
+
+#start {
+    background-color:#e9b000;
+    color: white;
+}
+
+#start:hover {
+    background-color: white;
+    color: #e9b000;
+}
+
+/* Image */
+
+#image-containter {
+    width: 100%;
+    height: 100%;
+}
+
+#image {
+    width: 100%;
+    height: 100%;
+}
+
 /* Start Menu */
 
 /* #start-menu {
@@ -38,6 +65,7 @@
     font-family: 'Nunito';
     font-size: 30px;
     margin: 20px 0 20px 0;
+    color: white;
 }
 
 #timer-numbers {
@@ -80,6 +108,13 @@
 
 #play-again {
     font-family: 'Nunito';
+    color: white;
+    background-color: #008f95;
+}
+
+#play-again:hover {
+    color: #008f95;
+    background-color: white;
 }
 
 /* Media Query */
